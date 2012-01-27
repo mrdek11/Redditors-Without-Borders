@@ -1,3 +1,19 @@
+<?php
+session_start();
+include("lib/db.php");
+include("lib/rwb-class.php");
+$rwb = new RWB();
+
+
+if(isset($_GET['logout'])){
+	session_destroy();
+	session_start();
+}
+if(isset($_POST['username'])){
+	$rwb->handleLogin();
+}
+
+?>
 <html>
 	<head>
 		<title>Redditors Without Borders</title>
@@ -7,10 +23,12 @@
 		</style>
 	</head>
 	<body>
-		<div align='center' style='padding-top:50px'>
-			<h1 style='color:#ff4400;'>Redditors Without Borders</h1>
+		<div align='right'>
+			<?php $rwb->displayHeader(); ?>
+		</div>
+		<div align='center' style='padding-top:20px'>
+			<img src='images/logo.png' />
 			<h2 style='color:#ff4400;'>We are developing our site, please <a href="http://www.Reddit.com/r/RWB">Join Us at Reddit</a></h2>
-			<img class="logo" src="images/reddit.jpg" />
 			<h2 style='color:#ff4400;'>BE THE CHANGE YOU WANT TO SEE</h2>
 		</div>	
 		<div class="social">
