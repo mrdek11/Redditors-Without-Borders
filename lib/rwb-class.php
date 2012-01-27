@@ -67,6 +67,12 @@ class RWB {
                       </div>";
 		echo "</td></tr></table>";
 	}
+	function handleProfileUpdate(){
+		$email = mysql_real_escape_string($_POST['email']);
+		$assets = mysql_real_escape_string($_POST['assets']);
+
+		Query("update Users set Email=\"$email\", Assets=\"$assets\" where id='{$_SESSION['userID']}';");
+	}
 	function handleRegistration(){
 		$username = mysql_real_escape_string($_POST['username']);
 		$password = md5($_POST['password']);
