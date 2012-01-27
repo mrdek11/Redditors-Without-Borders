@@ -1,4 +1,3 @@
-
 --
 -- Database: `rwb`
 --
@@ -44,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `Email` varchar(255) NOT NULL,
   `Registered` int(11) NOT NULL COMMENT 'timestamp',
   `LastLogin` int(11) NOT NULL COMMENT 'timestamp',
+  `Assets` text,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
