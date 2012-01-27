@@ -21,17 +21,10 @@ if(isset($_POST['form'])){
 <html>
 	<head>
 		<title>Redditors Without Borders</title>
-		<style>
-			a { text-decoration: none; color:#000000; }
-			a:hover { text-decoration: underline; }
-		</style>
 	</head>
 	<body>
-		<div align='right'>
-			<?php $rwb->displayHeader(); ?>
-		</div>
-		<div align='center' style='padding-top:20px'>
-			<img src='images/logo.png' />
+		<?php $rwb->displayHeader() ?>
+		<div align='center'>	
 			<h2 style='color:#ff4400;'>We are developing our site, please <a href="http://www.Reddit.com/r/RWB">Join Us at Reddit</a></h2>
 			<h2 style='color:#ff4400;'>BE THE CHANGE YOU WANT TO SEE</h2>
 		</div>	
