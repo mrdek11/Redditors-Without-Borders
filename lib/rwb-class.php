@@ -38,7 +38,7 @@ class RWB {
                 	echo "<a href='index.php?logout'>Logout {$_SESSION['username']}</a>";
                 }
                 echo "</div>";
-		echo "<div id='loginForm' style='display:none;s-index:10'>
+		echo "<div id='loginForm' style='display:none;s-index:10;position:absolute;top:25px;right:20px;background-color:white;'>
 			<form action='index.php' method='post'>
 			Username: <input type='text' name='username' /><br />
 			Password: <input type='password' name='password' /><br />
@@ -46,7 +46,7 @@ class RWB {
 			<input type='submit' value='Login' />
 			</form>
 		      </div>";
-		echo "<div id='registrationForm' style='display:none;s-index:10'>
+		echo "<div id='registrationForm' style='display:none;s-index:10;position:absolute;top:25px;right:20px;background-color:white;'>
                         <form action='index.php' method='post'>
                         Username: <input type='text' name='username' /><br />
                         Password: <input type='password' name='password' /><br />
