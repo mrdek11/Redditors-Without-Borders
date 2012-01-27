@@ -1,7 +1,16 @@
 <?php
 
 class RWB {
-	function displayHeader(){
+
+function displayNews(){
+	$query = Query("select * from News order by Timestamp desc limit 3;");
+	while($row = mysql_fetch_object($query)){
+		echo "<h1>$row->Title</h1>
+		<span style='color:#cccccc;'>".date("M j, Y h:ia",$row->Timestamp)."</span>
+		$row->body";		
+	}
+}	
+function displayHeader(){
 		echo "<style>
                        a { text-decoration: none; color:#000000; }
                        a:hover { text-decoration: underline; }
