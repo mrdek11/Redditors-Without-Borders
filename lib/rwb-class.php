@@ -10,7 +10,7 @@ class RWB {
 		
 		echo "<tr>
 			<td>
-				<img src='images/logo.png' />
+				<a href='index.php'><img src='images/logo.png' border='0' /></a>
 			</td>
 		        <td valign='top' align='right'>";
 		if(!isset($_SESSION['username'])){
@@ -45,7 +45,7 @@ class RWB {
 			</script>";
                 	echo "<a id='loginLink' href='javascript:showLogin();'>Login</a> | <a id='registrationLink' href='javascript:showRegistration();'>Register</a>";
                 }else{  
-                	echo "<a href='index.php'>Home</a> | <a href='profile.php'>Profile</a> | <a href='index.php?logout'>Logout {$_SESSION['username']}</a>";
+                	echo "<a href='profile.php'>Profile</a> | <a href='index.php?logout'>Logout {$_SESSION['username']}</a>";
                 }
                 echo "</div>";
 		echo "<div id='loginForm' style='display:none;s-index:10;position:absolute;top:25px;right:20px;background-color:white;'>
