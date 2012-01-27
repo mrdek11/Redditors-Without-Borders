@@ -9,8 +9,12 @@ if(isset($_GET['logout'])){
 	session_destroy();
 	session_start();
 }
-if(isset($_POST['username'])){
-	$rwb->handleLogin();
+if(isset($_POST['form'])){
+	$form = $_POST['form'];
+	if($form == "login")
+		$rwb->handleLogin();
+	if($form == "registration")
+		$rwb->handleRegistration();
 }
 
 ?>
