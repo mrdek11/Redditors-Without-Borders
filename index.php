@@ -24,11 +24,13 @@ if(isset($_POST['form'])){
 	</head>
 	<body>
 		<?php $rwb->displayHeader() ?>
-		<div align='center'>	
-			<h2 style='color:#ff4400;'>We are developing our site, please <a href="http://www.Reddit.com/r/RWB">Join Us at Reddit</a></h2>
-			<h2 style='color:#ff4400;'>BE THE CHANGE YOU WANT TO SEE</h2>
-		</div>	
-		<div class="social">
+		<div align='center'>
+			<h1 style='color:#7CB5E5;'>Redditors Without Borders</h1>
+			<img src='images/logo-big.png' />
+			<h2 style='color:#7CB5E5;'>We are developing our site, please <a href="http://www.Reddit.com/r/RWB">Join Us at Reddit</a></h2>
+		</div>
+		<br /><br /><br /><br />
+		<div class="social" align='center'>
 			<a href="http://www.facebook.com/pages/Redditors-Without-Borders/353038971381560"><img class="logo" src="images/facebook.jpg" /></a>
 				
 			<a href="https://twitter.com/#!/RedditWB"><img class="logo" src="images/twitter.jpg" /></a>
