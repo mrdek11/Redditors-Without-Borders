@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `Causes` (
   `Created` int(11) NOT NULL DEFAULT '0' COMMENT 'timestamp',
   `GoalMet` int(11) NOT NULL DEFAULT '0' COMMENT 'timestamp',
   `Image` text NOT NULL,
+  `Location` varchar(255) NOT NULL DEFAULT 'Unknown',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 

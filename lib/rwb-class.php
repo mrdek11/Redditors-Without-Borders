@@ -71,7 +71,7 @@ function showCauses(){
 							<td valign='top' style='width:320px;'>
 								<span style='font-size:25px'><a href='#'>$o->Title</a></span><br/>
 							$subs Subscribers<br/>
-							Extra info<p />
+							<span style='color:#888888;'>$o->Location</span><p />
 							$o->Detail<br/>
 							</td>
 							<td align='right' valign='top'>
