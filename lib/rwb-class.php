@@ -10,6 +10,91 @@ function displayNews(){
 		$row->body";		
 	}
 }	
+function showCauses(){
+	$userID = $_SESSION['userID'];
+	?>
+	<script tyle='text/javascript'>
+		function subscribe(link){
+			if(!loggedIn){
+				scroll(2000,0);
+				showLogin();
+				return false;
+			}
+			link.innerHTML = "<img border='0' src='images/subscribe-pressed.png' />";
+			link.onclick = function onclick(event){
+				unsubscribe(this);
+			};
+
+			var xmlhttp;
+			if (window.XMLHttpRequest){
+				xmlhttp=new XMLHttpRequest();
+			}else{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.open("GET","subscribe.php?sub=true&id="+link.id,true);
+			xmlhttp.send();
+		}
+		function unsubscribe(link){
+                        link.innerHTML = "<img border='0' src='images/subscribe.png' />";
+			link.onclick = function onclick(event){
+                                subscribe(this);
+                        };
+			var xmlhttp;
+                        if (window.XMLHttpRequest){
+                                xmlhttp=new XMLHttpRequest();
+                        }else{
+                                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                        }
+                        xmlhttp.open("GET","subscribe.php?sub=false&id="+link.id,true);
+                        xmlhttp.send();
+                }
+	</script>
+	<?php
+	echo "<table>";
+	echo "<tr>
+		<td style='width:100px;'>&nbsp;</td>
+	     	<td>
+			<table>";
+
+	$query = Query("select c.*,(select count(*) from Subscriptions where CauseID=c.id) as subs,(select count(*) from Subscriptions s where CauseID=c.id and s.UserID='$userID') as sub from Causes c order by subs desc;");
+	while($o = mysql_fetch_object($query)){
+		$raised = 0;
+		$total = $o->Goal;
+		$perc = round(($raised / $total) * 100);
+		$subs = number_format($o->subs,0);
+		$subbed = ($o->sub == 0) ? false : true;
+		echo "<tr>
+				<td>
+					<table>
+						<tr>
+							<td align='left' valign='top' style='border:1px solid #cccccc;padding:3px;width:200px;'><img src=\"$o->Image\" width='200' /></td>
+							<td valign='top' style='width:320px;'>
+								<span style='font-size:25px'><a href='#'>$o->Title</a></span><br/>
+							$subs Subscribers<br/>
+							Extra info<p />
+							$o->Detail<br/>
+							</td>
+							<td align='right' valign='top'>
+								<span style='font-size:25px;'>$perc%</span><br/>raised<br/>";
+							if($subbed){
+								echo "<a href='javascript:void(0);' onclick='unsubscribe(this);' id='link_$o->id'><img border='0' src='images/subscribe-pressed.png' /></a>";
+							}else{
+								echo "<a href='javascript:void(0);' onclick='subscribe(this);' id='link_$o->id'><img border='0' src='images/subscribe.png' /></a>";
+							}
+							echo "</td>
+						</tr>
+					</table>
+				</td>
+		      </tr>";
+		echo "<tr>
+			<td><hr /></td>
+		      </tr>";
+	}
+	echo "</table>
+	</td></tr>";
+	
+	echo "</table>";
+}
 function displayHeader(){
 		echo "<style>
                        a { text-decoration: none; color:#5a83c3; }
@@ -24,7 +109,7 @@ function displayHeader(){
 				<table>
 					<tr>
 						<td style='padding-left:20px;font-size:20px;'><a href='index.php'>home</a></td>
-						<td style='padding-left:20px;font-size:20px;'><a href='#'>causes</a></td>
+						<td style='padding-left:20px;font-size:20px;'><a href='causes.php'>causes</a></td>
 					</tr>
 				</table>
 			</td>
@@ -60,8 +145,10 @@ function displayHeader(){
                         }
 			</script>";
                 	echo "<a id='loginLink' href='javascript:showLogin();'>Login</a> | <a id='registrationLink' href='javascript:showRegistration();'>Register</a>";
+			echo "<script type='text/javascript'>loggedIn=false;</script>";
                 }else{  
                 	echo "<a href='profile.php'>Profile</a> | <a href='index.php?logout'>Logout {$_SESSION['username']}</a>";
+			echo "<script type='text/javascript'>loggedIn=true;</script>";
                 }
                 echo "</div>";
 		echo "<div id='loginForm' style='display:none;s-index:10;position:absolute;top:30px;right:20px;background-color:white;'>
